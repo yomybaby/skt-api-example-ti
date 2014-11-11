@@ -4,18 +4,21 @@
 		<ScrollableView>
 			<View class="mainWrap">
 				<View class="section">
+					<ImageView id="landmarkImage"></ImageView>
 					<View class="textWrap">
 						<Label class="labelText">여기는</Label>
 						<Label id="landmark" class="mainText"></Label>
 					</View>
 				</View>
 				<View class="section">
+					<ImageView id="modifyDescImage"></ImageView>
 					<View class="textWrap">
 						<Label class="labelText">날씨는</Label>
 						<Label id="modifyDesc" class="mainText" onClick="doClick"></Label>
 					</View>
 				</View>
 				<View class="section">
+					<ImageView id="statusImage"></ImageView>
 					<View class="textWrap">
 						<Label class="labelText">하늘은</Label>
 						<Label id="statusDesc" class="mainText"></Label>

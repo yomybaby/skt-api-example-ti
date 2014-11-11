@@ -43,13 +43,16 @@ function updateWeather(){
 		anXhr.onload = function() {
 			// Handle the XML data.
 			var resultObj = JSON.parse(this.responseText);
-			$.modifyDesc.text =resultObj.weatherModifyDescription;
+			$.modifyDesc.text = resultObj.weatherModifyDescription;
 			$.statusDesc.text = resultObj.weatherStatusDescription;
+			
+			getFlickrPhotos({text : resultObj.weatherModifyDescription, targetProxy : $.modifyDescImage});
+			getFlickrPhotos({text : resultObj.weatherStatusDescription, targetProxy : $.statusImage});
 			
 			$.updateInfo.text = moment().format('llll');
 		};
-		anXhr.onerror = function() {
-			//alert('The HTTP request failed');
+		anXhr.onerror = function(e) {
+			alert(e);
 		};
 		
 		// Send the request data.
@@ -71,13 +74,16 @@ function updateWeather(){
 }
 
 function updateLandmarkName(e){
-	
 	var xhr = Ti.Network.createHTTPClient();
 	xhr.setTimeout(10000);
 	
 	xhr.onload = function(e) {
 		var resultObj = JSON.parse(this.responseText);
-		$.landmark.text = resultObj.results[0].name;
+		
+		var landmarkname = resultObj.results[0].name;
+		$.landmark.text = landmarkname;
+		
+		getFlickrPhotos({text : landmarkname.replace(/\((.*)?\)/,''), targetProxy : $.landmarkImage});
 	};
 	
 	xhr.onerror = function(e) {
@@ -91,8 +97,6 @@ function updateLandmarkName(e){
 	xhr.setRequestHeader('TDCProjectKey','2045a1d8-0ff7-46f3-b0e6-ae608ddd25dd');
 	xhr.setRequestHeader('Accept','application/json');
 	xhr.send();
-		
-    
 }
 
 function updateWeatherStatus(e){
@@ -115,11 +119,9 @@ function updateWeatherStatus(e){
 			mData.temperature.tmax,
 			mData.humidity
 		);
-		// mData.wsdp;
-		
 	};
 	planetXhr.onerror = function(e) {
-		alert('The HTTP request failed');
+		alert(e);
 	};
 	
 	// Send the request data.
@@ -130,7 +132,6 @@ function updateWeatherStatus(e){
 	},'http://apis.skplanetx.com/weather/current/minutely'));
 	planetXhr.setRequestHeader('appKey','ea5b6542-e779-3fad-836d-a8e760539fe3');
 	planetXhr.setRequestHeader('Accept','application/json');
-	// planetXhr.setRequestHeader('x-skpop-userId','yomybaby');
 	planetXhr.send();
 }
 
@@ -139,3 +140,33 @@ Ti.App.addEventListener('resume', function(e) {
 	updateWeather();
 });
 
+
+function getFlickrPhotos(args){
+	args = args || {};
+	
+	var xhr = Ti.Network.createHTTPClient();
+	xhr.setTimeout(10000);
+	
+	xhr.onload = function(e) {
+		var resultObj = JSON.parse(this.responseText);
+		var photo = resultObj.photos.photo[_.random(0,resultObj.photos.photo.length)];
+		
+		args.targetProxy && (args.targetProxy.image = 'http://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_n.jpg');
+		// alert($.statusImage.image);
+	};
+	
+	xhr.onerror = function(e) {
+		alert(e);
+	};
+	
+	xhr.open('GET',encodeData({
+		method : 'flickr.photos.search',
+		api_key : '3daf938f07bf4146d6a416260a5737b1',
+		text : args.text,
+		format : 'json',
+		nojsoncallback : 1
+	},'https://api.flickr.com/services/rest/'));
+	xhr.setRequestHeader('TDCProjectKey','2045a1d8-0ff7-46f3-b0e6-ae608ddd25dd');
+	xhr.setRequestHeader('Accept','application/json');
+	xhr.send();
+}

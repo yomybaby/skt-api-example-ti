@@ -1,5 +1,5 @@
 ".container": {
-	backgroundColor:"white"
+	backgroundColor:"#ddd"
 }
 
 ".mainText": {
@@ -8,15 +8,15 @@
 	},
 	left : 10,
 	right: 10,
-	textAlign : 'center'
+	textAlign : 'center',
+	color : 'white'
 }
 
 "#updateInfo" : {
-	bottom : 10,
+	bottom : 0,
 	font : {
 		fontSize: 12
 	}
-	
 }
 
 "#status" : {
@@ -45,3 +45,13 @@
 	height : '33%'
 }
 
+".section[platform:ios]": {
+	clipMode :  Titanium.UI.iOS.CLIP_MODE_ENABLED
+}
+
+"ImageView" : {
+	width : 320,
+	height : 320,
+	top : 0,
+	preventDefaultImage : true
+}
