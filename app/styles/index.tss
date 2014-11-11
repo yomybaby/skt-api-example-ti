@@ -1,0 +1,47 @@
+".container": {
+	backgroundColor:"white"
+}
+
+".mainText": {
+	font: {
+		fontSize: 50
+	},
+	left : 10,
+	right: 10,
+	textAlign : 'center'
+}
+
+"#updateInfo" : {
+	bottom : 10,
+	font : {
+		fontSize: 12
+	}
+	
+}
+
+"#status" : {
+	font : {
+		fontSize : 22
+	}
+}
+
+".mainWrap" : {
+	layout : 'vertical',
+	top : 20,
+	bottom : 20
+}
+".textWrap" : {
+	layout : 'vertical',
+	height : Ti.UI.SIZE
+}
+
+".labelText" : {
+	font : {
+		fontSize: 50
+	},
+	color : '#ccc'
+}
+".section": {
+	height : '33%'
+}
+
