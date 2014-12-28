@@ -1,18 +1,8 @@
-Welcome to your Appcelerator Titanium Mobile Project
+## SKT API 사용 예제 - Titanium Mobile (iOS, Android)
 
-This is a blank project.  Start by editing your application's app.js to 
-make your first mobile project using Titanium.
+SKT의 Weather와 ZonePOI API를 사용하는 간단한 Titanium Mobile 앱입니다. iOS 및 Android에서 실행가능합니다.
 
-
-
-----------------------------------
-Stuff our legal folk make us say:
-
-Appcelerator, Appcelerator Titanium and associated marks and logos are 
-trademarks of Appcelerator, Inc. 
-
-Titanium is Copyright (c) 2008-2013 by Appcelerator, Inc. All Rights Reserved.
-
-Titanium is licensed under the Apache Public License (Version 2). Please
-see the LICENSE file for the full license.
-
+### 관련 링크 
+- [T디벨로퍼스 Weather API](https://developers.sktelecom.com/content/tapi/Weather/)
+- [T디벨로퍼스 ZonePOI API](https://developers.sktelecom.com/content/tapi/ZonePOI/)
+- [Titanium Mobile](http://www.appcelerator.com/titanium/)
