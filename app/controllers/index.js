@@ -148,6 +148,7 @@ function updateWeather(e){
 }
 
 function updateLandmarkName(e){
+	
 	httpRequest({
 		url : 'https://apis.sktelecom.com/v1/zonepoi/pois',
 		method : 'GET',
@@ -160,11 +161,13 @@ function updateLandmarkName(e){
 			'Accept' : 'application/json'
 		}
 	}).then(function(result){
-		alert(1);
+		console.log(result);
 		var landmarkname = result.data.results[0].name;
 		$.landmark.text = landmarkname;
 		console.log(result.data);
 		//getFlickrPhotos({text : landmarkname.replace(/\((.*)?\)/,''), targetProxy : $.landmarkImage});
+	}).catch(function(e){
+		// alert(e);
 	});
 }
 

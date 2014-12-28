@@ -13,10 +13,11 @@
 }
 
 "#updateInfo" : {
-	bottom : 0,
+	bottom : 5,
 	font : {
 		fontSize: 12
-	}
+	},
+	color : 'black'
 }
 
 "#status" : {
@@ -42,16 +43,16 @@
 	color : '#ccc'
 }
 ".section": {
-	height : '33%'
+	height : '33%',
+	backgroundColor : '#666'
 }
 
-".section[platform:ios]": {
+".section[platform=ios]": {
 	clipMode :  Titanium.UI.iOS.CLIP_MODE_ENABLED
 }
 
 "ImageView" : {
-	width : 320,
-	height : 320,
-	top : 0,
+	width : Ti.UI.FILL,
+	height : Ti.UI.FILL,
 	preventDefaultImage : true
 }
