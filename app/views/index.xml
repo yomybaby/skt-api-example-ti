@@ -26,9 +26,9 @@
 				</View>
 				<Label id="updateInfo"></Label>
 			</View>
-			<View>
+			<ScrollView>
 				<Label id="status"></Label>
-			</View>
+			</ScrollView>
 		</ScrollableView>
 	</Window>
 </Alloy>

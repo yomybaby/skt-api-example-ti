@@ -21,7 +21,7 @@
 
 "#status" : {
 	font : {
-		fontSize : 22
+		fontSize : 12
 	}
 }
 
